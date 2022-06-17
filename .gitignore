@@ -33,3 +33,4 @@ build/
 .vscode/
 src/main/java/com/navodya/violationfixer/analyser/model/trainingmodel/CustomLemmaAnnotator.java
 Violation-Fixer.zip
+/.idea/
