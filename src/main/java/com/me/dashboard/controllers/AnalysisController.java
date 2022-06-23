@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/api/v1/cvf/")
+@RequestMapping("/api/v1/csa/")
 public class AnalysisController {
 
     private static final Logger logger = LoggerFactory.getLogger(AnalysisController.class);
