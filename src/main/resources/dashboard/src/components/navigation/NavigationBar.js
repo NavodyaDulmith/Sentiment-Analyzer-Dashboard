@@ -1,20 +1,35 @@
 import React from "react";
-import {Navbar} from "react-bootstrap";
-import "../myStyles.css";
+import {Nav, Navbar} from "react-bootstrap";
+import {Link} from "react-router-dom";
+import "../../App.css";
 
-class HeaderBar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const style = { width: "50px" };
+
+class NavigationBar extends React.Component {
   render() {
     return (
-      <div className="topnav">
-        <Navbar fixed="top" expand="lg" variant="dark" className="topnav">
-          <Navbar.Brand href="">V-Canteen</Navbar.Brand>
-        </Navbar>
-      </div>
+      <Navbar class="navbar" fixed="top">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="mr-auto">
+            <Link to={""} className="navbar-brand text-white ">
+              <img src="logo.png" alt="" style={style} />
+              CoVacciMOOD
+            </Link>
+          </Nav>
+          <Nav>
+            <Nav.Link className="text-white-fade" href="#deets">
+              Settings
+            </Nav.Link>
+            <Nav.Link className="text-white-fade" eventKey={2} href="#memes">
+              Help
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }
 
-export default HeaderBar;
+export default NavigationBar;
