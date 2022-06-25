@@ -1,0 +1,46 @@
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.p {
+  font-size: 10px;
+}
+
+.background {
+  background-image: linear-gradient(
+    to right,
+    #23262a,
+    #262a2e,
+    #292d32,
+    #2d3136,
+    #30353a,
+    #30353a,
+    #30353a,
+    #30353a,
+    #2d3136,
+    #292d32,
+    #262a2e,
+    #23262a
+  );
+  height: 300px;
+}
+
+#left {
+  float: left;
+  background-color: transparent;
+}
+
+#right {
+  float: right;
+  width: 40%;
+  height: 280px;
+  background-color: transparent;
+}

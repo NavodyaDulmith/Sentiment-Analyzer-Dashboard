@@ -1,0 +1,28 @@
+.sidenav {
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  /*background-color: #ffffff;*/
+  overflow-x: hidden;
+  padding-top: 20px;
+
+  background-image: linear-gradient(
+    to top,
+    #23262a,
+    #272b2f,
+    #2b3035,
+    #30353a,
+    #343a40
+  );
+}
+
+.sidenav a {
+  padding: 20px 10px 20px 20px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}

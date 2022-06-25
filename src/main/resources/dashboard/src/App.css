@@ -1,6 +1,6 @@
-.App {
-  text-align: center;
-}
+/* .App {
+    text-align: center;
+} */
 
 .App-logo {
   height: 40vmin;
@@ -11,6 +11,12 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.margin-top {
+  margin-top: 20px;
+  margin-left: 100px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
 }
 
 .App-header {
@@ -35,4 +41,42 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/*.navbar {
+  background-image: linear-gradient(
+    to left,
+    #23262a,
+    #272b2f,
+    #2b3035,
+    #30353a,
+    #343a40
+  );
+}*/
+
+.text-grey {
+    color: #a1a1a1;
+}
+
+.svgLoader {
+    animation: spin 1s linear infinite;
+    margin-right: 40%;
+}
+
+.divLoader {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
