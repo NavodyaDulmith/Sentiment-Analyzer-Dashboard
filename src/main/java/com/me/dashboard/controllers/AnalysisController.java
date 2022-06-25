@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @ComponentScan
@@ -25,8 +22,8 @@ public class AnalysisController {
     @Autowired
     AnalysisService analysisService;
 
-    @GetMapping(value = "analyse")
-    public ResponseEntity<String> analyse() {
+    @PostMapping(value = "analyse", consumes = "application/json;charset=UTF-8")
+    public ResponseEntity<String> analyse(@RequestBody(required = false) String payload) {
         try {
             return new ResponseEntity<>(analysisService.analyse(), HttpStatus.OK);
         } catch (Exception e) {
