@@ -3,7 +3,7 @@ import {Nav, Navbar} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import "../../App.css";
 
-const style = { width: "50px" };
+const style = { width: "25px" };
 
 class NavigationBar extends React.Component {
   render() {
