@@ -5,16 +5,29 @@
   font-style: italic;
 }
 
-.btnsize{
-  padding: 14px 40px;
-  height:75%;
+.jumbo_style{
+  text-align: center;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.jumbo-img{
+  background-image: url(../banner.png);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.box{
+  background-color: #f8f9fa;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+
+.btn_size{
+  padding: 15px 32px;
+  height: 60px;
 }
 
 .issue-name {
   font-weight: bold;
-}
-
-.issue-file {
 }
 
 .mybox {
@@ -49,7 +62,7 @@
   width: 100%;
   max-width: 100%;
   display: inline-block;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .box {
