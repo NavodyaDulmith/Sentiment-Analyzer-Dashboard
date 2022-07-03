@@ -4,6 +4,7 @@ import HistoryView from "./components/history/HistoryView";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import AnalyzeView from "./components/home/AnalyzeView";
 import SideBar from "./components/sidebar/SideBar";
+import NavigationBar from "./components/navigation/NavigationBar";
 import {Col, Container, Row} from "react-bootstrap";
 
 class App extends Component {
@@ -29,6 +30,7 @@ class App extends Component {
     return (
         <div className="App">
           <Router>
+            <NavigationBar/>
             <SideBar/>
             <br/>
             <Container>
