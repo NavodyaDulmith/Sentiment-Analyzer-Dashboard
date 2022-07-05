@@ -24,4 +24,16 @@ public class SentimentResultCrud {
     public List<SentimentResult> getAll() {
         return sentenceRepository.findAll();
     }
+
+    public Long getPositiveCount() {
+        return sentenceRepository.positiveCount();
+    }
+
+    public Long getNegativeCount() {
+        return sentenceRepository.negativeCount();
+    }
+
+    public Long getNeutralCount() {
+        return sentenceRepository.neutralCount();
+    }
 }
