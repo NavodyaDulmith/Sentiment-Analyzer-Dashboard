@@ -1,10 +1,6 @@
 import React from "react";
-import {Link} from "react-router-dom";
 import "../../css/Projectview.css";
-import Chart from "react-apexcharts";
 import axios from "axios";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlusSquare, faSyncAlt, faTrash,} from "@fortawesome/free-solid-svg-icons";
 
 const mystyle = {
   float: "right",
@@ -52,206 +48,149 @@ export default class HistoryView extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      projects: [
+      results: [
+        /* {
+          id: 1,
+          sentence:
+            "Sample Text 111111111111111111111111111111111111111111111111111111",
+          confidence: "0.999885082244873",
+          negative: "0.999885082244873",
+          neutral: "8.876612992025912e-05",
+          positive: "2.614063305372838e-05",
+          creationDate: "March 8th 2022",
+          sentiment: "Negative",
+        },
         {
           id: 1,
-          name: "Signal Server",
-          key: "signal",
-          violations: "249",
-          loc: "13000",
-          effort: "7d 1h",
-          creationDate: "March 8th 2021",
-          path: "D:/Projects/Test/Signal-Server-master",
+          sentence:
+            "Sample Text 22222222222222222222222222222222222222222222222222222222",
+          confidence: "0.999885082244873",
+          negative: "0.999885082244873",
+          neutral: "8.876612992025912e-05",
+          positive: "2.614063305372838e-05",
+          creationDate: "March 8th 2022",
+          sentiment: "Positive",
         },
         {
-          id: 2,
-          name: "Whatsapp",
-          key: "wt",
-          violations: "678",
-          loc: "24562",
-          effort: "5d 1h",
-          creationDate: "March 10th 2021",
-          path: "",
+          id: 1,
+          sentence:
+            "Sample Text 333333333333333333333333333333333333333333333333333333333",
+          confidence: "0.999885082244873",
+          negative: "0.999885082244873",
+          neutral: "8.876612992025912e-05",
+          positive: "2.614063305372838e-05",
+          creationDate: "March 8th 2022",
+          sentiment: "Neutral",
         },
         {
-          id: 3,
-          name: "Project 3",
-          key: "wt",
-          violations: "1245",
-          loc: "24562",
-          effort: "5d 1h",
-          creationDate: "March 10th 2021",
-          path: "",
-        },
-        {
-          id: 4,
-          name: "Project 4",
-          key: "wt",
-          violations: "1956",
-          loc: "24562",
-          effort: "5d 1h",
-          creationDate: "March 10th 2021",
-          path: "",
-        },
+          id: 1,
+          sentence:
+            "Sample Text 444444444444444444444444444444444444444444444444444444444",
+          confidence: "0.999885082244873",
+          negative: "0.999885082244873",
+          neutral: "8.876612992025912e-05",
+          positive: "2.614063305372838e-05",
+          creationDate: "March 8th 2022",
+          sentiment: "Negative",
+        }, */
       ],
-      options: {
-        /* labels: ["Signal Server", "Whatsapp", "Project 3", "Project 4"], */
-        labels: [],
-        chart: {
-          foreColor: "#b3b3b3",
-          animations: {
-            enabled: true,
-            easing: "easeinout",
-            speed: 3000,
-            animateGradually: {
-              enabled: true,
-              delay: 150,
-            },
-            dynamicAnimation: {
-              enabled: true,
-              speed: 350,
-            },
-          },
-        },
-      },
-      /* series: [249, 678, 1245, 1956], */
-      series: [],
     };
   }
 
   componentDidMount() {
-    /*this.setState({loading: true});
+    /* this.setState({loading: true}); */
     axios
-        .get("http://localhost:8080/api/v1/cvf/projects")
-        //.then(response => console.log(response.data))
-        .then((response) => response.data)
-        .then((data) => {
-          console.log(data, "projects");
-          this.setState({projects: data});
-        });
-
-    axios
-        .post("http://localhost:8080/api/v1/cvf/chart")
-        .then((response) => response.data)
-        .then((data) => {
-          this.setState({options: {labels: data.options}});
-          this.setState({series: data.series});
-          this.setState({loading: false});
-        });*/
+      .get("http://localhost:8080/api/v1/csa/history")
+      //.then(response => console.log(response.data))
+      .then((response) => response.data)
+      .then((data) => {
+        console.log(data, "results");
+        this.setState({ results: data });
+      });
   }
-
-  rescan = (pid) => {
-    const id = { id: pid };
-    alert("Project Rescanning Started!");
-    axios
-      .post("http://localhost:8080/api/v1/cvf/rescan", id)
-      .then((response) => response.data)
-      .then((data) => {
-        alert("Project Rescanning Completed!");
-      });
-  };
-
-  delete = (pid) => {
-    const id = { id: pid };
-    axios
-      .post("http://localhost:8080/api/v1/cvf/delete", id)
-      .then((response) => response.data)
-      .then((data) => {
-        window.location.reload();
-      });
-  };
 
   render() {
     return (
       <div>
         {this.state.loading === false ? (
           <div>
-            <hr class="my-3" />
-            <div class="jumbotron bg-secondary text-white background">
-              <div id="left">
-                <h1 class="display-4">
-                  {this.state.projects.length} Projects Analyzed
-                </h1>
-                <hr class="my-3" />
-              </div>
-              <div id="right">
-                <div className="donut">
-                  <Chart
-                    options={this.state.options}
-                    series={this.state.series}
-                    type="donut"
-                    width="380"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="bg-dark text-white" style={box}>
-              <div class="card-body">
-                <div class="text-grey text-left">
-                  Projects{" "}
-                  <Link to={"/addProject"} style={mystyle}>
-                    <FontAwesomeIcon icon={faPlusSquare} /> New Project
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {this.state.projects.length === 0 ? (
+            {this.state.results.length === 0 ? (
               <div style={box} class="shadow-sm p-3 mb-5 bg-white rounded">
-                No Projects Found!
+                No results Found!
               </div>
             ) : (
-              this.state.projects.map((project) => (
-                <div style={box} class="p-3 bg-dark rounded text-white ">
-                  <Link
-                    style={{ color: "white" }}
-                    class="h5"
-                    to={{
-                      pathname: "/viewIssues",
-                      state: {
-                        project_name: project.name,
-                        project_key: project.sonarProjectKey,
-                        project_path: project.projectPath,
-                      },
-                    }}
-                  >
-                    {project.name}
-                  </Link>
-
-                  <FontAwesomeIcon
-                    icon={faSyncAlt}
-                    style={mystyle}
-                    onClick={this.rescan.bind(this, project.id)}
-                  />
-
-                  <FontAwesomeIcon
-                    icon={faTrash}
-                    style={mystyle}
-                    onClick={this.delete.bind(this, project.id)}
-                  />
-                  <hr />
-                  <div>
-                    <div class="column text-center text-danger">
-                      {project.violations}
-                      <p class="p-1 font-weight-light font-italic text-grey">
-                        Code Violations
+              this.state.results.map((result) => (
+                <div>
+                  <div class="box">
+                    <div class="container">
+                      <p class="text-success font-weight-bold">
+                        Analyzed Text :{result.sentence}
                       </p>
-                    </div>
+                      <hr></hr>
+                      <p class="text-danger font-weight-bold">
+                        Classified Class : {result.sentiment}
+                      </p>
 
-                    <div class="column text-center text-warning">
-                      {project.effort} min
-                      <p class="p-1 font-weight-light font-italic text-grey">
-                        Effort
-                      </p>
-                    </div>
-                    <div class="column text-center">
-                      {project.creationDate}
-                      <p class="p-1 font-weight-light font-italic text-grey">
-                        Last Analysis Date
-                      </p>
+                      <p class="">Confidence : {result.confidence}</p>
+                      <p class="">Positive Pobability : {result.positive}</p>
+                      <p class="">Negative Pobability : {result.negative}</p>
+                      <p class="">Neutral Pobability : {result.neutral}</p>
+                      <p class="">Analyzed Date : {result.creationDate}</p>
+                      <br></br>
                     </div>
                   </div>
-                  <br />
+
+                  {/* <div class="box">
+                    <div style={box} class="container ">
+                      <div class="text-grey font-weight-bold">
+                        Analaysed Text :{" "}
+                        <p class="text-success">{result.sentence}</p>
+                      </div>
+                      <hr />
+                      <div class="column font-weight-bold text-center text-danger">
+                        {result.sentiment}
+                        <p class="p-1 font-weight-normal font-italic text-grey">
+                          Sentiment
+                        </p>
+                      </div>
+                      <div>
+                        <div class="column font-weight-normal text-center">
+                          {result.confidence}
+                          <p class="p-1 font-weight-normal font-italic text-grey">
+                            Confidence
+                          </p>
+                        </div>
+                        <div class="column  font-weight-normal text-center">
+                          {result.creationDate}
+                          <p class="p-1 font-weight-normal font-italic text-grey">
+                            Last Analysis Date
+                          </p>
+                        </div>
+
+                        <div class="column font-weight-normal text-center">
+                          {result.negative}
+                          <p class="p-1 font-weight-normal font-italic text-grey">
+                            Negative probability
+                          </p>
+                        </div>
+
+                        <div class="column font-weight-normal text-center">
+                          {result.neutral}
+                          <p class="p-1 font-weight-normal font-italic text-grey">
+                            Neutral probability
+                          </p>
+                        </div>
+
+                        <div class="column font-weight-normal text-center ">
+                          {result.positive}
+                          <p class="p-1 font-weight-normal font-italic text-grey">
+                            Positive probability
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <br />
+                  </div> */}
                 </div>
               ))
             )}
