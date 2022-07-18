@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import "../../css/SideBar.css";
 import {Link} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUser} from "@fortawesome/free-solid-svg-icons";
 
 const style = {
   position: "absolute",
@@ -12,10 +10,10 @@ class SideBar extends Component {
   render() {
     return (
       <div class="sidenav">
-        <div class="container nav-link text-center">
+        {/* <div class="container nav-link text-center">
           <FontAwesomeIcon icon={faUser} size="3x" />
           <p class="">Admin</p>
-        </div>
+        </div> */}
         <Link to={""} className="nav-link">
           Analayzer
         </Link>
