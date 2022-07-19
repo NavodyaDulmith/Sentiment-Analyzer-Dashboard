@@ -16,16 +16,16 @@ public class ResultDTO {
     private String sentence;
 
     @JsonProperty("confidence")
-    private Long confidence;
+    private Double confidence;
 
     @JsonProperty("negative")
-    private Long negative;
+    private Double negative;
 
     @JsonProperty("positive")
-    private Long positive;
+    private Double positive;
 
     @JsonProperty("neutral")
-    private Long neutral;
+    private Double neutral;
 
     @JsonProperty("sentiment")
     private String sentiment;
