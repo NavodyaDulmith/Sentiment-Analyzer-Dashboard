@@ -22,28 +22,10 @@ const x = {
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    /* this.state = {
-          loading: false,
-          issues: [],
-          disabled: false,
-          options: {
-            labels: [],
-            chart: {
-              foreColor: "#b3b3b3",
-            },
-          },
-          series: [],
-        }; */
-    /* this.state1 = {
-          options: {
-            labels: ["Positive", "Negative", "Neutral"],
-          },
-          series: [44, 55, 41],
-        }; */
 
     this.state = {
       chart_2_options: {
-        labels: ["?","?","?"],
+        labels: ["?", "?", "?"],
         chart: {
           animations: {
             enabled: true,
@@ -120,15 +102,10 @@ class Dashboard extends React.Component {
         this.setState({
           chart_2_options: { chart: { animations: x } },
         });
-        console.log(this.state, "state");
       });
   }
 
   render() {
-    // console.log(this.props.location);
-    //console.log(this.props.location.state.project_key);
-    console.log(this.state, "state");
-
     return (
       <div>
         <CardGroup>

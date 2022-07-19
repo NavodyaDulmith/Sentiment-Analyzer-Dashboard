@@ -35,11 +35,9 @@ export default class AnalyzeView extends Component {
       .then((response) => {
         console.log(response);
         if (response.data != null) {
-          console.log("response", response.data);
           this.setState({ show: true });
           this.setState({ output: response.data });
           this.setState({ probabilities: response.data.probabilities });
-          console.log("set output", this.state);
         }
       });
 

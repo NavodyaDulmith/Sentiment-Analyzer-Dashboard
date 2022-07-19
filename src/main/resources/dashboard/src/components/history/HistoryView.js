@@ -2,17 +2,6 @@ import React from "react";
 import "../../css/Projectview.css";
 import axios from "axios";
 
-const mystyle = {
-  float: "right",
-  "font-size": "14px",
-  color: " #a1a1a1",
-  height: "10px",
-};
-
-const style = {
-  background: "linear-gradient(to right, #414345, #232526)",
-};
-
 const box = {
   "margin-bottom": "10px",
   width: "100%",
@@ -48,63 +37,16 @@ export default class HistoryView extends React.Component {
     super(props);
     this.state = {
       loading: false,
-      results: [
-        /* {
-          id: 1,
-          sentence:
-            "Sample Text 111111111111111111111111111111111111111111111111111111",
-          confidence: "0.999885082244873",
-          negative: "0.999885082244873",
-          neutral: "8.876612992025912e-05",
-          positive: "2.614063305372838e-05",
-          creationDate: "March 8th 2022",
-          sentiment: "Negative",
-        },
-        {
-          id: 1,
-          sentence:
-            "Sample Text 22222222222222222222222222222222222222222222222222222222",
-          confidence: "0.999885082244873",
-          negative: "0.999885082244873",
-          neutral: "8.876612992025912e-05",
-          positive: "2.614063305372838e-05",
-          creationDate: "March 8th 2022",
-          sentiment: "Positive",
-        },
-        {
-          id: 1,
-          sentence:
-            "Sample Text 333333333333333333333333333333333333333333333333333333333",
-          confidence: "0.999885082244873",
-          negative: "0.999885082244873",
-          neutral: "8.876612992025912e-05",
-          positive: "2.614063305372838e-05",
-          creationDate: "March 8th 2022",
-          sentiment: "Neutral",
-        },
-        {
-          id: 1,
-          sentence:
-            "Sample Text 444444444444444444444444444444444444444444444444444444444",
-          confidence: "0.999885082244873",
-          negative: "0.999885082244873",
-          neutral: "8.876612992025912e-05",
-          positive: "2.614063305372838e-05",
-          creationDate: "March 8th 2022",
-          sentiment: "Negative",
-        }, */
-      ],
+      results: [],
     };
   }
 
   componentDidMount() {
-    /* this.setState({loading: true}); */
     axios
       .get("http://localhost:8080/api/v1/csa/history")
-      //.then(response => console.log(response.data))
+
       .then((response) => response.data)
       .then((data) => {
-        console.log(data, "results");
         this.setState({ results: data });
       });
   }
@@ -139,58 +81,6 @@ export default class HistoryView extends React.Component {
                       <br></br>
                     </div>
                   </div>
-
-                  {/* <div class="box">
-                    <div style={box} class="container ">
-                      <div class="text-grey font-weight-bold">
-                        Analaysed Text :{" "}
-                        <p class="text-success">{result.sentence}</p>
-                      </div>
-                      <hr />
-                      <div class="column font-weight-bold text-center text-danger">
-                        {result.sentiment}
-                        <p class="p-1 font-weight-normal font-italic text-grey">
-                          Sentiment
-                        </p>
-                      </div>
-                      <div>
-                        <div class="column font-weight-normal text-center">
-                          {result.confidence}
-                          <p class="p-1 font-weight-normal font-italic text-grey">
-                            Confidence
-                          </p>
-                        </div>
-                        <div class="column  font-weight-normal text-center">
-                          {result.creationDate}
-                          <p class="p-1 font-weight-normal font-italic text-grey">
-                            Last Analysis Date
-                          </p>
-                        </div>
-
-                        <div class="column font-weight-normal text-center">
-                          {result.negative}
-                          <p class="p-1 font-weight-normal font-italic text-grey">
-                            Negative probability
-                          </p>
-                        </div>
-
-                        <div class="column font-weight-normal text-center">
-                          {result.neutral}
-                          <p class="p-1 font-weight-normal font-italic text-grey">
-                            Neutral probability
-                          </p>
-                        </div>
-
-                        <div class="column font-weight-normal text-center ">
-                          {result.positive}
-                          <p class="p-1 font-weight-normal font-italic text-grey">
-                            Positive probability
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <br />
-                  </div> */}
                 </div>
               ))
             )}
