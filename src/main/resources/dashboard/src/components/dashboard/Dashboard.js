@@ -127,7 +127,10 @@ class Dashboard extends React.Component {
           <Card>
             <Card.Body>
               <Card.Title>
-                Analysed Text Count {this.state.count} 125
+                Analysed Text Count{" "}
+                {this.state.series[0].data[0] +
+                  this.state.series[0].data[1] +
+                  this.state.series[0].data[2]}
               </Card.Title>
               <div className="app">
                 <div className="row">
