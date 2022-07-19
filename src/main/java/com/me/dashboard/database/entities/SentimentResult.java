@@ -18,16 +18,16 @@ public class SentimentResult {
     private String sentence;
 
     @Column(name = "confidence")
-    private Long confidence;
+    private Double confidence;
 
     @Column(name = "negative")
-    private Long negative;
+    private Double negative;
 
     @Column(name = "positive")
-    private Long positive;
+    private Double positive;
 
     @Column(name = "neutral")
-    private Long neutral;
+    private Double neutral;
 
     @Column(name = "sentiment")
     private String sentiment;
