@@ -14,6 +14,7 @@ import com.me.dashboard.utils.JObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -32,6 +33,9 @@ public class AnalysisService {
     @Autowired
     HttpClient httpClient;
 
+    @Value("${prediction.api.url}")
+    private String url;
+
     private static final Logger logger = LoggerFactory.getLogger(AnalysisService.class);
 
     public String analyse(String payload) throws IOException {
@@ -40,7 +44,7 @@ public class AnalysisService {
         String text = (obj.get("text").getAsString());
 
         //call prediction api
-        Map<String, Object> res = httpClient.sendPost("https://covaccimood-service-57e4ykq7iq-uc.a.run.app/predict",payload);
+        Map<String, Object> res = httpClient.sendPost(url,payload);
         res.put("text",text);
         if (res.get("status").equals(200)){
             addResult(String.valueOf(res.get("response")),text);
