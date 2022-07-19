@@ -7,6 +7,7 @@ import SideBar from "./components/sidebar/SideBar";
 import NavigationBar from "./components/navigation/NavigationBar";
 import Dashboard from "./components/dashboard/Dashboard"
 import {Col, Container, Row} from "react-bootstrap";
+import signout from "./components/signout/Signout"
 
 class App extends Component {
   authenticate() {
@@ -38,9 +39,11 @@ class App extends Component {
               <Row>
                 <Col lg={12} className={"margin-top"}>
                   <Switch>
-                    <Route path="/" exact component={AnalyzeView}></Route>
+                    <Route path="/" exact component={Dashboard}></Route>
                     <Route path="/history" exact component={HistoryView}></Route>
                     <Route path="/dashboard" exact component={Dashboard}></Route>
+                    <Route path="/analayze" exact component={AnalyzeView}></Route>
+                    <Route path="/signout" exact component={signout}></Route>
                   </Switch>
                 </Col>
               </Row>

@@ -14,11 +14,11 @@ class SideBar extends Component {
           <FontAwesomeIcon icon={faUser} size="3x" />
           <p class="">Admin</p>
         </div> */}
-        <Link to={""} className="nav-link">
-          Analayzer
-        </Link>
         <Link to={"dashboard"} className="nav-link">
           Dashboard
+        </Link>
+        <Link to={"analayze"} className="nav-link">
+          Analayzer
         </Link>
         <Link to={"history"} className="nav-link">
           History
