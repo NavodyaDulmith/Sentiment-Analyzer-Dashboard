@@ -58,13 +58,14 @@ public class HttpClient {
 
     }
 
-    public void sendPost(String url, String payload) throws ClientProtocolException, IOException {
+    public Map<String, Object> sendPost(String url, String payload) throws ClientProtocolException, IOException {
 
         HttpPost request = new HttpPost(url);
         request.addHeader("contet-type", "application/json");
         StringEntity entity = new StringEntity(payload);
         entity.setContentType("application/json");
         request.setEntity(entity);
+        Map<String, Object> res = new HashMap();
 
         try (CloseableHttpClient httpClient = HttpClients.createDefault();
              CloseableHttpResponse response = httpClient.execute(request)) {
@@ -72,12 +73,12 @@ public class HttpClient {
             logger.info("status - > " + response.getStatusLine().getStatusCode());
             logger.info("payload" + payload);
             HttpEntity entityRS = response.getEntity();
-            if (entity != null) {
 
-                logger.debug(EntityUtils.toString(entityRS));
-            }
-
+            res.put("response", EntityUtils.toString(entityRS));
+            res.put("status", response.getStatusLine().getStatusCode());
         }
+
+        return res;
     }
 
 }
