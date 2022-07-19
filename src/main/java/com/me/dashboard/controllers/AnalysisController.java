@@ -25,7 +25,7 @@ public class AnalysisController {
     @PostMapping(value = "analyse", consumes = "application/json;charset=UTF-8")
     public ResponseEntity<String> analyse(@RequestBody(required = false) String payload) {
         try {
-            return new ResponseEntity<>(analysisService.analyse(), HttpStatus.OK);
+            return new ResponseEntity<>(analysisService.analyse(payload), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
