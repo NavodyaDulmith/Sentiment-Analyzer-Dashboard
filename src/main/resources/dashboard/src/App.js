@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import AnalyzeView from "./components/home/AnalyzeView";
 import SideBar from "./components/sidebar/SideBar";
 import NavigationBar from "./components/navigation/NavigationBar";
+import Dashboard from "./components/dashboard/Dashboard"
 import {Col, Container, Row} from "react-bootstrap";
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
                   <Switch>
                     <Route path="/" exact component={AnalyzeView}></Route>
                     <Route path="/history" exact component={HistoryView}></Route>
+                    <Route path="/dashboard" exact component={Dashboard}></Route>
                   </Switch>
                 </Col>
               </Row>
