@@ -2,8 +2,6 @@ package com.me.dashboard.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.me.dashboard.client.HttpClient;
@@ -81,23 +79,4 @@ public class AnalysisService {
         return objectMapper.writeValueAsString(resultDTOS);
     }
 
-    public String getChart() {
-
-        List<SentimentResult> results = sentimentResultCrud.getAll();
-        JsonArray series = new JsonArray();
-        JsonArray options = new JsonArray();
-        for (SentimentResult result : results) {
-            //Long violationCount = result.getViolations();
-            //series.add(violationCount);
-            //options.add(result.getName());
-        }
-        JsonObject object = new JsonObject();
-        object.add("options", options);
-        object.add("series", series);
-
-        /*ObjectMapper objectMapper = JObjectMapper.getInstance();
-        return objectMapper.writeValueAsString(object);*/
-        return new Gson().toJson(object);
-
-    }
 }
