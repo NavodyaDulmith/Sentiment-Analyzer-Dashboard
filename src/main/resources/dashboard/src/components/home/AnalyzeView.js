@@ -15,7 +15,8 @@ export default class AnalyzeView extends Component {
   }
 
   initialState = {
-    name: "",
+    text: "",
+    probabilities: {},
   };
 
   resetProject = () => {
@@ -26,7 +27,7 @@ export default class AnalyzeView extends Component {
     event.preventDefault();
 
     const text = {
-      name: this.state.name,
+      text: this.state.name,
     };
 
     axios
@@ -34,10 +35,11 @@ export default class AnalyzeView extends Component {
       .then((response) => {
         console.log(response);
         if (response.data != null) {
-          console.log(response.data);
+          console.log("response", response.data);
           this.setState({ show: true });
           this.setState({ output: response.data });
-          console.log("set output");
+          this.setState({ probabilities: response.data.probabilities });
+          console.log("set output", this.state);
         }
       });
 
@@ -91,17 +93,21 @@ export default class AnalyzeView extends Component {
             <div class="container">
               <h3 class="font-weight-light">Prediction Result</h3>
               <hr></hr>
-              <p>
-                Analyzed Text :Here's what I've done so far. {this.state.input}{" "}
+              <p class="text-danger font-weight-bold">
+                Classified Class : {this.state.output.sentiment}
               </p>
               <hr></hr>
-              <p class="text-danger font-weight-bold">
-                Classified Class :Positive
+              <br></br>
+              <p class="">
+                Positive Pobability : {this.state.probabilities.positive}
+              </p>
+              <p class="">
+                Negative Pobability : {this.state.probabilities.negative}
+              </p>
+              <p class="">
+                Neutral Pobability : {this.state.probabilities.neutral}
               </p>
               <br></br>
-              <p class="">Positive Pobability :</p>
-              <p class="">Negative Pobability :</p>
-              <p class="">Neutral Pobability :</p>
             </div>
           </div>
         ) : (
