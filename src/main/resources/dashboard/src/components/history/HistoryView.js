@@ -1,12 +1,18 @@
 import React from "react";
 import "../../css/Projectview.css";
 import axios from "axios";
+import CsvDownload from "react-json-to-csv";
 
 const box = {
   "margin-bottom": "10px",
   width: "100%",
   "max-width": "100%",
   display: "inline-block",
+};
+
+const btn = {
+  float: "right",
+  "background-color": "green",
 };
 
 const Loader = () => (
@@ -56,6 +62,15 @@ export default class HistoryView extends React.Component {
       <div>
         {this.state.loading === false ? (
           <div>
+            <div>
+              <CsvDownload
+                data={this.state.results}
+                filename="Prediction History.csv"
+              >
+                Download History
+              </CsvDownload>
+            </div>
+            <br></br>
             {this.state.results.length === 0 ? (
               <div style={box} class="shadow-sm p-3 mb-5 bg-white rounded">
                 No results Found!
